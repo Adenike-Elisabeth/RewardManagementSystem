@@ -6,11 +6,8 @@ USE balancee_rewards;
 
 -- Create customers table
 CREATE TABLE IF NOT EXISTS customers (
-                                         customer_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                         customer_name VARCHAR(255) NOT NULL,
-    customer_email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    role VARCHAR(50) NOT NULL,
+    customer_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(255) NOT NULL,
     total_cashback DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     current_balance DECIMAL(10, 2) NOT NULL DEFAULT 0.00
     );
@@ -36,11 +33,11 @@ TRUNCATE TABLE cashback_transactions;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- Insert sample customers
-INSERT INTO customers (customer_id, customer_name, customer_email, password, role, total_cashback, current_balance)
+INSERT INTO customers (customer_id, customer_name, total_cashback, current_balance)
 VALUES
-    (1, 'John Doe', 'john.doe@example.com', 'password123', 'CUSTOMER', 250.00, 125.00),
-    (2, 'Jane Smith', 'jane.smith@example.com', 'password456', 'CUSTOMER', 300.00, 150.00),
-    (3, 'James Smith', 'james.smith@example.com', 'password456', 'CUSTOMER', 300.00, 150.00);
+    (1, 'John Doe', 250.00, 125.00),
+    (2, 'Jane Smith', 300.00, 150.00),
+    (3, 'James Smith', 300.00, 150.00);
 
 -- Insert sample cashback transactions for John Doe
 INSERT INTO cashback_transactions (customer_id, transaction_date, amount_earned, description)

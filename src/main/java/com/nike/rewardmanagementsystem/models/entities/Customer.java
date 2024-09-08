@@ -22,12 +22,6 @@ public class Customer {
 
     private String customerName;
 
-    private String customerEmail;
-
-    private String password;
-
-    private String role;
-
     private BigDecimal totalCashback;
 
     private BigDecimal currentBalance;

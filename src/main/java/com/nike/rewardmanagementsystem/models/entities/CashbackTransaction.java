@@ -19,8 +19,6 @@ public class CashbackTransaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transactionId;
 
-    //private Long customerId;
-
     private LocalDateTime transactionDate;
 
     private BigDecimal amountEarned;

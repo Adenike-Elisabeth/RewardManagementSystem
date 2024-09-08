@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface CashbackTransactionRepository extends JpaRepository<CashbackTransaction, Long> {
     List<CashbackTransaction> findByCustomerCustomerId(Long customerId);
-    List<CashbackTransaction> findByTransactionId(Long transactionId);
 }
