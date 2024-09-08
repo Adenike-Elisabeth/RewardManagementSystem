@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "618df7d9-7a69-49b2-9589-159401dacd4e",
+		"name": "RewardManagementSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26993566",
+		"_collection_link": "https://planetary-space-124736.postman.co/workspace/ISDS-TEAM~745a28a2-5add-49bc-83c6-2d67f251b6db/collection/26993566-618df7d9-7a69-49b2-9589-159401dacd4e?action=share&source=collection_link&creator=26993566"
+	},
+	"item": [
+		{
+			"name": "GetCustomerBalanceById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/rewards/balance/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"rewards",
+						"balance",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCustomerTransactionHistory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/rewards/history?customerId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"rewards",
+						"history"
+					],
+					"query": [
+						{
+							"key": "customerId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
