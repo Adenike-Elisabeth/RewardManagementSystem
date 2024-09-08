@@ -1,9 +1,8 @@
 package com.nike.rewardmanagementsystem.services.impl;
 
 import com.nike.rewardmanagementsystem.exceptions.CustomerNotFoundException;
-import com.nike.rewardmanagementsystem.models.dtos.request.CustomerAddRewardRequest;
+
 import com.nike.rewardmanagementsystem.models.dtos.response.CashbackTransactionResponseDto;
-import com.nike.rewardmanagementsystem.models.dtos.response.CustomerAddRewardResponse;
 
 import com.nike.rewardmanagementsystem.models.dtos.response.CustomerRewardBalanceResponseDto;
 import com.nike.rewardmanagementsystem.models.entities.CashbackTransaction;
@@ -27,67 +26,6 @@ public class CustomerRewardServiceImpl implements CustomerRewardService {
     private final CustomerRepository customerRepository;
 
     private final CashbackTransactionRepository cashbackTransactionRepository;
-
-
-//    @Override
-//    public CustomerAddRewardResponse addReward(CustomerAddRewardRequest customerRequest) throws CustomerNotFoundException {
-//        log.info("Adding reward for customer: {}", customerRequest.getCustomerName());
-//
-//        Customer customer = customerRepository.findByCustomerName(customerRequest.getCustomerName());
-//        if (customer == null) {
-//            log.error("Customer with name {} not found", customerRequest.getCustomerName());
-//            throw new CustomerNotFoundException("Customer with name " + customerRequest.getCustomerName() + " not found.");
-//        }
-//
-//        customer.setTotalCashback(customer.getTotalCashback().add(customerRequest.getTotalCashback()));
-//        customer.setCurrentBalance(customer.getCurrentBalance().add(customerRequest.getTotalCashback()));
-//
-//        Customer updatedCustomer = customerRepository.save(customer);
-//
-//        CustomerAddRewardResponse response = CustomerAddRewardResponse.builder()
-//                .customerId(updatedCustomer.getCustomerId())
-//                .customerName(updatedCustomer.getCustomerName())
-//                .totalCashback(updatedCustomer.getTotalCashback())
-//                .currentBalance(updatedCustomer.getCurrentBalance())
-//                .build();
-//
-//        log.info("Reward added successfully for customer: {}", customerRequest.getCustomerName());
-//        return response;
-//    }
-@Override
-public CustomerAddRewardResponse addReward(CustomerAddRewardRequest customerRequest) throws CustomerNotFoundException {
-    log.info("Adding reward for customer: {}", customerRequest.getCustomerName());
-
-    Customer customer = customerRepository.findByCustomerName(customerRequest.getCustomerName());
-    if (customer == null) {
-        log.error("Customer with name {} not found", customerRequest.getCustomerName());
-        throw new CustomerNotFoundException("Customer with name " + customerRequest.getCustomerName() + " not found.");
-    }
-
-    // Handle potential null values for totalCashback and currentBalance
-    BigDecimal totalCashback = customer.getTotalCashback() != null ? customer.getTotalCashback() : BigDecimal.ZERO;
-    BigDecimal currentBalance = customer.getCurrentBalance() != null ? customer.getCurrentBalance() : BigDecimal.ZERO;
-
-    // Add the new cashback amount to the existing values
-    customer.setTotalCashback(totalCashback.add(customerRequest.getTotalCashback()));
-    customer.setCurrentBalance(currentBalance.add(customerRequest.getTotalCashback()));
-
-    // Save the updated customer details
-    Customer updatedCustomer = customerRepository.save(customer);
-
-    // Build the response
-    CustomerAddRewardResponse response = CustomerAddRewardResponse.builder()
-            .customerId(updatedCustomer.getCustomerId())
-            .customerName(updatedCustomer.getCustomerName())
-            .totalCashback(updatedCustomer.getTotalCashback())
-            .currentBalance(updatedCustomer.getCurrentBalance())
-            .build();
-
-    log.info("Reward added successfully for customer: {}", customerRequest.getCustomerName());
-    return response;
-}
-
-
 
 
     @Override
